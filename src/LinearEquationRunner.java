@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class LinearEquationRunner {
     public static void main(String[] args) {
         Scanner myScanner = new Scanner(System.in);
-        System.out.println("Welcome!");
+        System.out.println("Welcome to this program!");
         System.out.println("Enter coordinate 1: ");
         String str1 = myScanner.nextLine();
         int indexX1 = str1.indexOf(",");
@@ -30,7 +30,6 @@ public class LinearEquationRunner {
             double newX = myScanner.nextDouble();
             System.out.println(linearEquation.coordinateForX(newX));
         }
-
         myScanner.close();
     }
 }

@@ -63,8 +63,24 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
                    subtraction!
          */
         public String equation() {
+            int slopeY = y2 - y1;
+            int slopeX = x2 - x1;
+            String fraction = "";
+            if(slopeY % slopeX != 0) {
+                if ((slopeX > 0 && slopeY > 0) || (slopeX < 0 && slopeY < 0)) {
+                    fraction = Math.abs(slopeY) + "/" + Math.abs(slopeX);
+                }
+                else {
+                    if(slopeX < 0 || slopeY < 0) {
+                        fraction = "- " + Math.abs(slopeY) + "/" + Math.abs(slopeX);
+                    }
+                }
+            }
+            else {
+                fraction = "" + (int)slope();
+            }
             String posOrNegIntercept;
-            if (yIntercept() < 0) {
+            if (yIntercept() > 0) {
                 posOrNegIntercept = "x + " + yIntercept();
             }
             else {
@@ -75,7 +91,7 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
                     posOrNegIntercept = "x - " + Math.abs(yIntercept());
                 }
             }
-            return "y = " + slope() + posOrNegIntercept;
+            return "y = " + fraction + posOrNegIntercept;
         }
 
 
@@ -111,7 +127,10 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
 
           */
         public String lineInfo() {
-            return "\nThe original points: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")\nThe equation of the line is " + equation() + "\nThe slope of this line is: " + slope() + "\nThe y-intercept of the line is: " + yIntercept() + "\nThe distance between the two points is: " + distance() + "\n";
+            return "\nThe original points: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 +
+                    ")\nThe equation of the line is " + equation() + "\nThe slope of this line is: " + slope() +
+                    "\nThe y-intercept of the line is: " + yIntercept() + "\nThe distance between the two points is: " +
+                    distance() + "\n";
 
         }
 
