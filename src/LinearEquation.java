@@ -72,7 +72,7 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
                 }
                 else {
                     if(slopeX < 0 || slopeY < 0) {
-                        fraction = "- " + Math.abs(slopeY) + "/" + Math.abs(slopeX);
+                        fraction = "-" + Math.abs(slopeY) + "/" + Math.abs(slopeX);
                     }
                 }
             }
@@ -127,7 +127,7 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
 
           */
         public String lineInfo() {
-            return "\nThe original points: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 +
+            return "\n----Line Info----\nThe original points: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 +
                     ")\nThe equation of the line is " + equation() + "\nThe slope of this line is: " + slope() +
                     "\nThe y-intercept of the line is: " + yIntercept() + "\nThe distance between the two points is: " +
                     distance() + "\n";
