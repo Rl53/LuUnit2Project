@@ -94,11 +94,11 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
             // initialized the strings representing the y-intercept and x
             String posOrNegIntercept;
             String xExist = "x";
-            String newYIntercept = "" + yIntercept();
+            String newYIntercept = "" + Math.abs(yIntercept());
 
             // turns the y-intercept into an integer if it is a whole number
             if (Math.abs((int) yIntercept()) == Math.abs(yIntercept())) {
-                newYIntercept = "" + (Math.abs((int) yIntercept()));
+                newYIntercept = "" + (int) Math.abs(yIntercept());
             }
 
             // if the slope is 0, then x is set to an empty string because it does not have a value
