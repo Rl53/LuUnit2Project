@@ -63,34 +63,82 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
                    subtraction!
          */
         public String equation() {
+            // assigning the numerator of the slope as slopeY and the denominator as slopeX
             int slopeY = y2 - y1;
             int slopeX = x2 - x1;
             String fraction = "";
+
+            // assigns the string 'fraction' as a positive or negative slope
             if(slopeY % slopeX != 0) {
                 if ((slopeX > 0 && slopeY > 0) || (slopeX < 0 && slopeY < 0)) {
                     fraction = Math.abs(slopeY) + "/" + Math.abs(slopeX);
                 }
                 else {
                     if(slopeX < 0 || slopeY < 0) {
-                        fraction = "-" + Math.abs(slopeY) + "/" + Math.abs(slopeX);
+                            fraction = "-" + Math.abs(slopeY) + "/" + Math.abs(slopeX);
                     }
                 }
             }
+            /* assigns the string 'fraction' to only include the sign of the slope if the slope
+            is equal to 1 or -1 */
             else {
                 fraction = "" + (int)slope();
+                if (slope() == 1 || slope() == 0) {
+                    fraction = "";
+                }
+                if (slope() == -1) {
+                    fraction = "-";
+                }
             }
+
+            // initialized the strings representing the y-intercept and x
             String posOrNegIntercept;
-            if (yIntercept() > 0) {
-                posOrNegIntercept = "x + " + yIntercept();
+            String xExist = "x";
+            String newYIntercept = "" + yIntercept();
+
+            // turns the y-intercept into an integer if it is a whole number
+            if (Math.abs((int) yIntercept()) == Math.abs(yIntercept())) {
+                newYIntercept = "" + (Math.abs((int) yIntercept()));
             }
+
+            // if the slope is 0, then x is set to an empty string because it does not have a value
+            if (slope() == 0) {
+                xExist = "";
+            }
+
+            if (yIntercept() > 0) {
+                // checks if the line is horizontal and returns the appropriate string
+                if (xExist.equals("")) {
+                    posOrNegIntercept = "" + newYIntercept;
+                }
+                // combines the slope times x with the y-intercept into a string
+                else {
+                    posOrNegIntercept = xExist + " + " + newYIntercept;
+                }
+            }
+            /* if the y-intercept is 0, then the string will either remove it or add it by itself
+            depending on whether x exists */
             else {
                 if(yIntercept() == 0) {
-                    posOrNegIntercept = "x";
+                    // checks for horizontal line
+                    if (xExist.equals("")) {
+                        posOrNegIntercept = "" + newYIntercept;
+                    }
+                    else {
+                        posOrNegIntercept = xExist;
+                    }
                 }
                 else {
-                    posOrNegIntercept = "x - " + Math.abs(yIntercept());
+                    // checks for horizontal line
+                    if (xExist.equals("")) {
+                        posOrNegIntercept = "-" + newYIntercept;
+                    }
+                    else {
+                        posOrNegIntercept = xExist + " - " + newYIntercept;
+                    }
                 }
             }
+            // returns the combined equation
             return "y = " + fraction + posOrNegIntercept;
         }
 
