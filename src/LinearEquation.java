@@ -96,8 +96,8 @@ public LinearEquation(int x1, int y1, int x2, int y2) {
             String xExist = "x";
             String newYIntercept = "" + Math.abs(yIntercept());
 
-            // turns the y-intercept into an integer if it is a whole number
-            if (Math.abs((int) yIntercept()) == Math.abs(yIntercept())) {
+            // turns the y-intercept into an integer if the slope is 0
+            if (Math.abs((int) yIntercept()) == Math.abs(yIntercept()) && slope() == 0) {
                 newYIntercept = "" + (int) Math.abs(yIntercept());
             }
 
